@@ -1,9 +1,13 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { Slot, SplashScreen } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
+import { generateConfig } from '@quirks/react-native';
+import { keplrMobile, leapMobile } from '@quirks/wallets';
+import { osmosis, osmosisAssetList } from '@nabla-studio/chain-registry';
+import { QuirksConfig } from "@quirks/react";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -42,15 +46,32 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
+const config = generateConfig({
+  wallets: [keplrMobile, leapMobile],
+  chains: [osmosis],
+  assetsLists: [osmosisAssetList],
+  walletConnectOptions: {
+    providerOpts: {
+      logger: "info",
+      projectId: "6d437301387412a0afb40a948949014b",
+      metadata: {
+        name: "React App",
+        description: "React App for WalletConnect",
+        url: "https://walletconnect.com/",
+        icons: ["https://avatars.githubusercontent.com/u/37784886"],
+      },
+    },
+  },
+})
+
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <QuirksConfig config={config}>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Slot />
+      </ThemeProvider>
+    </QuirksConfig>
   );
 }
