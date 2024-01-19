@@ -2,6 +2,7 @@ import { useChains, useConnect } from "@quirks/react";
 import { ActivityIndicator, Button } from "react-native";
 import { create } from "zustand";
 import { Text, View } from '../components/Themed';
+import { MsgSend } from "cosmjs-types/cosmos/bank/v1beta1/tx"
 
 const useSign = create(() => ({
   loading: false,
@@ -21,8 +22,6 @@ const send = async () => {
       hash: ''
     });
 
-    const MsgSend = (await import("cosmjs-types/cosmos/bank/v1beta1/tx"))
-      .MsgSend;
     const sign = (await import("@quirks/store")).sign;
     const getAddress = (await import("@quirks/store")).getAddress;
 

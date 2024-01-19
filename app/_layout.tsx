@@ -3,9 +3,9 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { Slot, SplashScreen } from 'expo-router';
 import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { Platform, useColorScheme } from 'react-native';
 import { generateConfig } from '@quirks/react-native';
-import { keplrMobile, leapMobile } from '@quirks/wallets';
+import { keplrExtension, keplrMobile, leapExtension, leapMobile } from '@quirks/wallets';
 import { osmosis, osmosisAssetList } from '@nabla-studio/chain-registry';
 import { QuirksConfig } from "@quirks/react";
 
@@ -47,7 +47,7 @@ export default function RootLayout() {
 }
 
 const config = generateConfig({
-  wallets: [keplrMobile, leapMobile],
+  wallets: Platform.OS === 'web' ? [keplrExtension, leapExtension] : [keplrMobile, leapMobile],
   chains: [osmosis],
   assetsLists: [osmosisAssetList],
   walletConnectOptions: {
