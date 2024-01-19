@@ -53,11 +53,11 @@ const config = generateConfig({
   walletConnectOptions: {
     providerOpts: {
       logger: "info",
-      projectId: "6d437301387412a0afb40a948949014b",
+      projectId: process.env.EXPO_PUBLIC_API_URL,
       metadata: {
-        name: "React App",
-        description: "React App for WalletConnect",
-        url: "https://walletconnect.com/",
+        name: "Quirks Demo",
+        description: "Quirks universal dApp demo",
+        url: "https://www.quirks.nabla.studio/",
         icons: ["https://avatars.githubusercontent.com/u/37784886"],
       },
     },
