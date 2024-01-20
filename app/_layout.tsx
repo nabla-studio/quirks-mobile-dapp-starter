@@ -53,7 +53,7 @@ const config = generateConfig({
   walletConnectOptions: {
     providerOpts: {
       logger: "info",
-      projectId: process.env.EXPO_PUBLIC_API_URL,
+      projectId: process.env.EXPO_PUBLIC_WC_PROJECT_ID,
       metadata: {
         name: "Quirks Demo",
         description: "Quirks universal dApp demo",
