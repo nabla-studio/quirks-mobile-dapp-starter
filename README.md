@@ -1,5 +1,7 @@
 # Quirks Mobile dApp Starter
 
+![Starter preview](<./doc/hero.jpeg>)
+
 This repo provides a starter for using [quirks](https://github.com/nabla-studio/quirks) on react native.
 
 ## ⚙️ Stack
