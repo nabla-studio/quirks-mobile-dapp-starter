@@ -13,9 +13,12 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@cosmjs/proto-signing": "^0.32.2",
     "@craftzdog/react-native-buffer": "^6.0.5",
     "@expo/vector-icons": "^13.0.0",
     "@nabla-studio/chain-registry": "^0.5.0",
+    "@noble/curves": "^1.3.0",
+    "@noble/hashes": "^1.3.3",
     "@quirks/core": "^0.12.0",
     "@quirks/react": "^0.8.0",
     "@quirks/react-native": "^0.2.0",
@@ -24,6 +27,7 @@
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-native-community/netinfo": "^11.2.1",
     "@react-navigation/native": "^6.0.2",
+    "@scure/bip39": "^1.2.2",
     "cosmjs-types": "^0.9.0",
     "expo": "~49.0.15",
     "expo-font": "~11.4.0",

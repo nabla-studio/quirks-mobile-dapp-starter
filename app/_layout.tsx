@@ -1,22 +1,31 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Slot, SplashScreen } from 'expo-router';
-import { useEffect } from 'react';
-import { Platform, useColorScheme } from 'react-native';
-import { generateConfig } from '@quirks/react-native';
-import { keplrExtension, keplrMobile, leapExtension, leapMobile } from '@quirks/wallets';
-import { osmosis, osmosisAssetList } from '@nabla-studio/chain-registry';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import { Slot, SplashScreen, Stack } from "expo-router";
+import { useEffect } from "react";
+import { Platform, useColorScheme } from "react-native";
+import { generateConfig } from "@quirks/react-native";
+import {
+  keplrExtension,
+  keplrMobile,
+  leapExtension,
+  leapMobile,
+} from "@quirks/wallets";
+import { osmosis, osmosisAssetList } from "@nabla-studio/chain-registry";
 import { QuirksConfig } from "@quirks/react";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
-} from 'expo-router';
+} from "expo-router";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: "(tabs)",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -24,7 +33,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
   });
 
@@ -47,7 +56,10 @@ export default function RootLayout() {
 }
 
 const config = generateConfig({
-  wallets: Platform.OS === 'web' ? [keplrExtension, leapExtension] : [keplrMobile, leapMobile],
+  wallets:
+    Platform.OS === "web"
+      ? [keplrExtension, leapExtension]
+      : [keplrMobile, leapMobile],
   chains: [osmosis],
   assetsLists: [osmosisAssetList],
   walletConnectOptions: {
@@ -62,15 +74,15 @@ const config = generateConfig({
       },
     },
   },
-})
+});
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
     <QuirksConfig config={config}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Slot />
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack />
       </ThemeProvider>
     </QuirksConfig>
   );
