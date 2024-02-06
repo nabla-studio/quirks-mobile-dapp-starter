@@ -3,6 +3,10 @@
 # dependencies
 node_modules/
 
+# excluded because they can be generate using `expo prebuild`
+android/
+ios/
+
 # Expo
 .expo/
 dist/
