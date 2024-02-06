@@ -45,7 +45,7 @@ cp .env .env.development.local
 EXPO_PUBLIC_WC_PROJECT_ID=<YOUR-PROJECT-ID>
 ```
 
-4. Build native projects:
+5. Build native projects:
 ```bash
 bun prebuild
 ```
