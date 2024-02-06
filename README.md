@@ -45,13 +45,18 @@ cp .env .env.development.local
 EXPO_PUBLIC_WC_PROJECT_ID=<YOUR-PROJECT-ID>
 ```
 
-5. Start expo dev server:
+4. Build native projects:
+```bash
+bun prebuild
+```
+
+6. Start expo dev server:
 
 ```bash
 bun start
 ```
 
-6. Start native projects:
+7. Start native projects:
 
     - **Android**
     ```bash
