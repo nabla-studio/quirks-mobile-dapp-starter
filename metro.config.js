@@ -9,4 +9,10 @@ const config = getDefaultConfig(__dirname, {
 
 config.resolver.sourceExts.push('mjs');
 
+config.transformer.getTransformOptions = async () => ({
+  transform: {
+    inlineRequires: true,
+  },
+})
+
 module.exports = config;
