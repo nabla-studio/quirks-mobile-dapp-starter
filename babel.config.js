@@ -6,8 +6,14 @@ module.exports = function (api) {
       "@quirks/react-native/babel",
     ],
     plugins: [
-      // Required for expo-router
-      "expo-router/babel",
-    ],
+      [
+				'module-resolver',
+        {
+          alias: {
+            '@/assets': './assets',
+          }
+        }
+      ]
+    ]
   };
 };
