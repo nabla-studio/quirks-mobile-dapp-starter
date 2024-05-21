@@ -1,12 +1,9 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
-import { useEffect } from "react";
+import { Stack } from "expo-router";
 import { Platform, useColorScheme } from "react-native";
 import { generateConfig } from "@quirks/react-native";
 import {
@@ -39,10 +36,10 @@ export default function RootLayout() {
 const queryClient = new QueryClient()
 
 const config = generateConfig({
-  wallets:
-    Platform.OS === "web"
-      ? [keplrExtension, leapExtension]
-      : [keplrMobile, leapMobile],
+  wallets: Platform.select({
+    default: [keplrMobile, leapMobile],
+    web: [keplrExtension, leapExtension]
+  }),
   chains: [osmosis],
   assetsLists: [osmosisAssetList],
   walletConnectOptions: {
