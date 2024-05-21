@@ -15,9 +15,9 @@ import {
 import { osmosis, osmosisAssetList } from "@nabla-studio/chain-registry";
 import { QuirksConfig } from "@quirks/react";
 import {
-  QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { queryClient } from "@/configs/tanstack-query";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -32,8 +32,6 @@ export const unstable_settings = {
 export default function RootLayout() {
   return <RootLayoutNav />;
 }
-
-const queryClient = new QueryClient()
 
 const config = generateConfig({
   wallets: Platform.select({
